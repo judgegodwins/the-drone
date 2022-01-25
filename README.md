@@ -37,9 +37,12 @@ Body
 ```JSON
 {
   "model": "any of LightWeight, MiddleWeight, CruiserWeight, HeavyWeight",
+  "state": "IDLE"
   "battery": "Number from 0 to 100"
 }
 ```
+Default state is IDLE
+
 Response
 ```JSON
 {
