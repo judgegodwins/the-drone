@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { DroneModelType } from "../../database/models/Drone";
+import { DroneModelType, DroneState } from "../../database/models/Drone";
 
 export const createDrone = Yup.object().shape({
   model: Yup.string().oneOf([
@@ -9,6 +9,16 @@ export const createDrone = Yup.object().shape({
     DroneModelType.CruiserWeight,
     DroneModelType.HeavyWeight,
   ]),
+  state: Yup.string()
+    .oneOf([
+      DroneState.Idle,
+      DroneState.Loading,
+      DroneState.Loaded,
+      DroneState.Delivering,
+      DroneState.Delivered,
+      DroneState.Returning,
+    ])
+    .optional(),
   battery: Yup.number().optional(),
 });
 
@@ -22,7 +32,7 @@ export const createLoad = Yup.object({
     .required("Should contain letters, numbers, underscore and dashes"),
   weight: Yup.number().required(),
   image: Yup.object({
-    name: Yup.string()
+    name: Yup.string(),
   }).required(),
   code: Yup.string()
     .matches(
