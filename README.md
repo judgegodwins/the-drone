@@ -16,7 +16,7 @@ On first serve, the DB will be seeded with 10 drones.
 
 Endpoints:
 
-POST /drone/register
+POST `/drone/register`
 Body
 ```JSON
 {
@@ -24,7 +24,7 @@ Body
   "battery": "Number from 0 to 100"
 }
 ```
-PATCH /drone/load
+PATCH `/drone/load`
 
 Query
 ?serialNumber=serialnumberofdrone
@@ -38,9 +38,9 @@ Body: Should be form-data format
   "image": "your image form data file"
 }
 ```
-code in the body is optional because it can be automatically generated
+`code` in the body is optional because it can be automatically generated
 
-GET /drone/get-loads?serialNumber=serialNumberOfDrone
+GET `/drone/get-loads?serialNumber=serialNumberOfDrone`
 
 Response
 Returns the loads in a drone
@@ -67,7 +67,7 @@ Returns the loads in a drone
 }
 ```
 
-GET /drone/available
+GET `/drone/available`
 
 Response
 Returns list of available drones
@@ -92,7 +92,7 @@ Returns list of available drones
     ]
 }
 ```
-GET /drone/battery-level?serialNumber=serialnumberofdrone
+GET `/drone/battery-level?serialNumber=serialnumberofdrone`
 
 ```JSON
 {
