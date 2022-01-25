@@ -47,6 +47,7 @@ const schema = new Schema<Drone>({
     type: Schema.Types.String,
     required: true,
     maxlength: 100,
+    unique: true
   },
   model: {
     type: Schema.Types.String,
@@ -107,7 +108,6 @@ function selectWeightLimit(doc: Document<any, any, Drone> & Drone) {
 }
 
 schema.pre("save", function (this: Document<any, any, Drone> & Drone, next) {
-  console.log("saving");
   this.weightLimit = selectWeightLimit(this);
 
   next();
