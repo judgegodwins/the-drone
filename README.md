@@ -32,12 +32,13 @@ PATCH /drone/load
 Query
 ?serialNumber=serialnumberofdrone
 
-Body
+Body: Should be form-data format
 ```JSON
 {
   "name": "string",
   "weight": "number",
-  "code": "string with Uppercase letters, numbers and underscore"
+  "code": "string with Uppercase letters, numbers and underscore",
+  "image": "your image form data file"
 }
 ```
 code in the body is optional because it'll automatically be generated
