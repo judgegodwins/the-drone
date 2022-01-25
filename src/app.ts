@@ -4,6 +4,7 @@ import cors from "cors";
 import Logger from "./core/Logger";
 import { corsUrl, environment } from "./config";
 import "./database";
+import './seed';
 import { ApiError, InternalError, NotFoundError } from "./core/ApiError";
 import routes from "./routes/core";
 

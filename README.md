@@ -1,5 +1,22 @@
 # The Drone
 
+To easily set up, add `DB_URI` and `CLOUDINARY_URL` to your .env
+
+You'll need a Cloudinary URL to run.
+
+Run the following to build
+```Bash
+npm run build
+```
+Run the following to start server:
+```Bash
+npm run serve
+```
+On first serve, the DB will be seeded with 10 drones.
+
+To be completed:
+validator bug, image upload, schedule job
+
 Endpoints:
 
 POST /drone/register

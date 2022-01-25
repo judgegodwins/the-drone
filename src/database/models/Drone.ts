@@ -45,7 +45,6 @@ export interface DroneModel extends Model<Drone> {
 const schema = new Schema<Drone>({
   serialNumber: {
     type: Schema.Types.String,
-    default: uuidv4(),
     required: true,
     maxlength: 100,
   },

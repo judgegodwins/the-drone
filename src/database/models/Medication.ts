@@ -29,7 +29,6 @@ const schema = new Schema<Medication>({
   code: {
     type: Schema.Types.String,
     required: true,
-    default: uuidv4().replace('-', '_').toUpperCase() // replace dash with underscore
   },
   image: {
     type: Schema.Types.String

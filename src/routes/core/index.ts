@@ -1,5 +1,9 @@
 import express from "express";
+import { v4 as uuidv4 } from 'uuid';
 import _ from "lodash";
+import { unlink } from "fs";
+import { promisify } from "util";
+import { v2 as cloudinary } from "cloudinary";
 import validator, { ValidationSource } from "../../helpers/validation";
 import { SuccessResponse } from "../../core/ApiResponse";
 import { DroneState, DroneModel } from "../../database/models/Drone";
@@ -7,6 +11,7 @@ import Medication, { MedicationModel } from "../../database/models/Medication";
 import asyncHandler from "../../helpers/asyncHandler";
 import { createDrone, createLoad, droneQuery } from "./schema";
 import { BadRequestError, NotFoundError } from "../../core/ApiError";
+import upload from "../../helpers/upload";
 
 const router = express.Router();
 
@@ -14,7 +19,10 @@ router.post(
   "/drone/register",
   // validator(createDrone, ValidationSource.Body),
   asyncHandler(async (req, res) => {
-    const drone = await DroneModel.create(req.body);
+    const drone = await DroneModel.create({ 
+      ...req.body,
+      serialNumber: uuidv4()
+    });
 
     new SuccessResponse("Drone created", drone.toObject()).send(res);
   })
@@ -24,7 +32,8 @@ router.patch(
   "/drone/load",
   // validator(droneQuery, ValidationSource.Query),
   // validator(createLoad, ValidationSource.Body),
-  asyncHandler(async (req, res) => {
+  upload.single("image"),
+  asyncHandler(async (req, res, next) => {
     const drone = await DroneModel.findOne({
       serialNumber: req.query.serialNumber as string,
     });
@@ -40,10 +49,35 @@ router.patch(
     const medicationCodeExists = await MedicationModel.findOne({
       code: req.body.code,
     });
+
     if (medicationCodeExists)
       throw new BadRequestError("Medication with code already exists");
 
-    const medication = await MedicationModel.create(req.body);
+    next();
+  }),
+  asyncHandler(async (req, res) => {
+    var imgUrl: string | undefined;
+
+    if (req.file) {
+      const uploadPhoto = async (file: Express.Multer.File) => {
+        const details = await cloudinary.uploader.upload(file.path, {
+          transformation: [{ quality: "auto" }],
+        });
+        await promisify(unlink)(file.path);
+
+        return details.secure_url;
+      };
+
+      if (!req.file) throw new BadRequestError("No image");
+
+      imgUrl = await uploadPhoto(req.file);
+    }
+
+    const medication = await MedicationModel.create({
+      ...req.body,
+      image: imgUrl,
+      code: req.body.code || uuidv4().replace('-', '_').toUpperCase() // replace dash with underscore
+    });
 
     const droneUpdate = await DroneModel.findOneAndUpdate(
       { serialNumber: req.query.serialNumber as string },
