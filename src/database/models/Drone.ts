@@ -121,7 +121,8 @@ schema.statics.isFree = async function (id, weight) {
 
   if (!drone) throw new Error("Drone not found");
 
-  if (drone.loads.length <= 0) return true;
+  if (drone.loads.length <= 0) return true; // Drone is empty.
+
   // Get total size of loads currently on the drone
   const currentLoad = drone.loads
     .map((load: Medication) => load.weight)
