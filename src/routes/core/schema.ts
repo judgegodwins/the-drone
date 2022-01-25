@@ -23,7 +23,7 @@ export const createLoad = Yup.object({
   weight: Yup.number().required(),
   image: Yup.object({
     name: Yup.string()
-  }),
+  }).required(),
   code: Yup.string()
     .matches(
       /^[A-Z0-9_]*$/g,

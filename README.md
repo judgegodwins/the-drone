@@ -24,6 +24,24 @@ Body
   "battery": "Number from 0 to 100"
 }
 ```
+Response
+```JSON
+{
+    "success": true,
+    "message": "Drone created",
+    "data": {
+        "serialNumber": "d6c047cc-48a4-404d-a11a-a4df71e1ce70",
+        "model": "LightWeight",
+        "battery": 87,
+        "state": "IDLE",
+        "loads": [],
+        "_id": "61f016e2aaac2deb29bb9957",
+        "weightLimit": 200,
+        "__v": 0
+    }
+}
+```
+
 PATCH `/drone/load`
 
 Query
