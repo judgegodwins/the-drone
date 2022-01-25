@@ -2,11 +2,11 @@
 
 To easily set up, add `DB_URI` and `CLOUDINARY_URL` to your .env
 
-You'll need a Cloudinary URL to run.\
+You'll need a Cloudinary URL to run.
 
-The log job runs at the beginning of every one hour (e.g 1:00, 2:00) to log the battery status of every drone.\
+The log job runs at the beginning of every one hour (e.g 1:00, 2:00) to log the battery status of every drone.
 
-LightWeight drones can carry 200gr, MiddleWeight => 300gr, CruiserWeight => 400 gr, HeavyWeight => 500gr.\
+LightWeight drones can carry 200gr, MiddleWeight => 300gr, CruiserWeight => 400 gr, HeavyWeight => 500gr.
 
 Run the following to build
 ```Bash
@@ -21,6 +21,7 @@ On first serve, the DB will be seeded with 10 drones.
 Endpoints:
 
 POST `/drone/register`
+
 Body
 ```JSON
 {
