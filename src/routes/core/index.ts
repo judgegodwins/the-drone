@@ -12,6 +12,7 @@ import asyncHandler from "../../helpers/asyncHandler";
 import { createDrone, createLoad, droneQuery } from "./schema";
 import { BadRequestError, NotFoundError } from "../../core/ApiError";
 import upload from "../../helpers/upload";
+import Logger from "../../core/Logger";
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
 import { Schema, Types, model } from "mongoose";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export const DOCUMENT_NAME = "Medication";
 export const COLLECTION_NAME = "medications";
@@ -18,21 +18,25 @@ const schema = new Schema<Medication>({
       validator: function (v: string) {
         return /^[a-zA-Z0-9_-]*$/g.test(v);
       },
-      message: 'Only upper case letters, underscore and numbers are allowed'
+      message: "Only upper case letters, underscore and numbers are allowed",
     },
-    required: true
+    required: true,
   },
   weight: {
     type: Schema.Types.Number,
-    required: true
+    required: true,
   },
   code: {
     type: Schema.Types.String,
     required: true,
   },
   image: {
-    type: Schema.Types.String
-  }
+    type: Schema.Types.String,
+  },
 });
 
-export const MedicationModel = model<Medication>(DOCUMENT_NAME, schema, COLLECTION_NAME)
+export const MedicationModel = model<Medication>(
+  DOCUMENT_NAME,
+  schema,
+  COLLECTION_NAME
+);

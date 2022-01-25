@@ -11,7 +11,7 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
-const logLevel = environment === 'development' ? 'debug' : 'warn';
+const logLevel = environment === 'development' ? 'debug' : 'info';
 
 const options = {
   file: {
@@ -36,6 +36,10 @@ export default createLogger({
       level: logLevel,
       format: format.combine(format.errors({ stack: true }), format.prettyPrint()),
     }),
+    new transports.File({
+      level: "info",
+      filename: "logs/dronelogs.log"
+    })
   ],
   exceptionHandlers: [new DailyRotateFile(options.file)],
   exitOnError: false, // do not exit on handled exceptions
