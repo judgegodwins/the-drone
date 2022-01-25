@@ -1,0 +1,3 @@
+worker should only belong to one route. 
+If a worker connected to a route is used for another reject and inform the user.
+Workers should only be assigned to routes in their region.
