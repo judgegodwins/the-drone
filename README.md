@@ -15,7 +15,7 @@ npm run serve
 On first serve, the DB will be seeded with 10 drones.
 
 To be completed:
-validator bug, image upload, schedule job
+validator bug, schedule job
 
 Endpoints:
 
