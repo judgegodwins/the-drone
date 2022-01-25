@@ -4,7 +4,7 @@ import _ from "lodash";
 import { unlink } from "fs";
 import { promisify } from "util";
 import { v2 as cloudinary } from "cloudinary";
-import validator, { ValidationSource } from "../../helpers/validation";
+import validator, { ValidationSource } from "../../helpers/validator";
 import { SuccessResponse } from "../../core/ApiResponse";
 import { DroneState, DroneModel } from "../../database/models/Drone";
 import Medication, { MedicationModel } from "../../database/models/Medication";
@@ -12,13 +12,12 @@ import asyncHandler from "../../helpers/asyncHandler";
 import { createDrone, createLoad, droneQuery } from "./schema";
 import { BadRequestError, NotFoundError } from "../../core/ApiError";
 import upload from "../../helpers/upload";
-import Logger from "../../core/Logger";
 
 const router = express.Router();
 
 router.post(
   "/drone/register",
-  // validator(createDrone, ValidationSource.Body),
+  validator(createDrone, ValidationSource.Body),
   asyncHandler(async (req, res) => {
     const drone = await DroneModel.create({ 
       ...req.body,
@@ -31,9 +30,9 @@ router.post(
 
 router.patch(
   "/drone/load",
-  // validator(droneQuery, ValidationSource.Query),
-  // validator(createLoad, ValidationSource.Body),
+  validator(droneQuery, ValidationSource.Query),
   upload.single("image"),
+  validator(createLoad, ValidationSource.Body),
   asyncHandler(async (req, res, next) => {
     const drone = await DroneModel.findOne({
       serialNumber: req.query.serialNumber as string,
@@ -92,7 +91,7 @@ router.patch(
 
 router.get(
   "/drone/get-loads",
-  // validator(droneQuery, ValidationSource.Query),
+  validator(droneQuery, ValidationSource.Query),
   asyncHandler(async (req, res) => {
     const drone = await DroneModel.findOne({
       serialNumber: req.query.serialNumber as string,
@@ -115,7 +114,7 @@ router.get(
 
 router.get(
   "/drone/battery-level",
-  // validator(droneQuery, ValidationSource.Query),
+  validator(droneQuery, ValidationSource.Query),
   asyncHandler(async (req, res) => {
     const drone = await DroneModel.findOne({
       serialNumber: req.query.serialNumber as string,

@@ -7,7 +7,7 @@ export const logDirectory = process.env.LOG_DIR;
 
 export const corsUrl = process.env.CORS_URL;
 
-export const port: number | string = process.env.PORT || 8080;
+export const port: number | string = process.env.PORT || 8081;
 
 export const jwtSecret = process.env.JWT_SECRET;
 
