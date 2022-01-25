@@ -2,7 +2,7 @@
 
 To easily set up, add `DB_URI` and `CLOUDINARY_URL` to your .env
 
-You'll need a Cloudinary URL to run.
+You'll need MongoDB and a Cloudinary URL to run.
 
 The log job runs at the beginning of every one hour (e.g 1:00, 2:00) to log the battery status of every drone.
 
