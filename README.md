@@ -38,7 +38,7 @@ Body: Should be form-data format
   "image": "your image form data file"
 }
 ```
-code in the body is optional because it'll automatically be generated
+code in the body is optional because it can be automatically generated
 
 GET /drone/get-loads?serialNumber=serialNumberOfDrone
 
