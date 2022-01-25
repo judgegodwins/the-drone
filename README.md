@@ -25,9 +25,7 @@ Body
 ```
 code in the body is optional because it'll automatically be generated
 
-GET /drone/get-loads
-Query
-?serialNumber=serialnumberofdrone
+GET /drone/get-loads?serialNumber=serialNumberOfDrone
 
 Response
 Returns the loads in a drone
@@ -79,8 +77,7 @@ Returns list of available drones
     ]
 }
 ```
-GET /drone/battery-level
-?serialNumber=serialnumberofdrone
+GET /drone/battery-level?serialNumber=serialnumberofdrone
 
 ```JSON
 {
