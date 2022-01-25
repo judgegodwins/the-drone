@@ -19,6 +19,9 @@ router.post(
   "/drone/register",
   validator(createDrone, ValidationSource.Body),
   asyncHandler(async (req, res) => {
+    if (req.body.state === DroneState.Loading && req.body.battery < 25)
+      throw new BadRequestError("Battery is too low to be in loading state");
+      
     const drone = await DroneModel.create({ 
       ...req.body,
       serialNumber: uuidv4()
