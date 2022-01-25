@@ -2,7 +2,11 @@ import './dotenvConfig';
 import './scheduleDroneLogs';
 import app from './app';
 import Logger from "./core/Logger";
-import { port } from './config';
+import { port, cloudinaryUrl } from './config';
+
+if (!cloudinaryUrl) {
+  Logger.error("Cloudinary url not set in .env");
+}
 
 app
   .listen(port, () => {
