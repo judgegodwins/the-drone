@@ -1,6 +1,17 @@
 # The Drone
 
-To easily set up, add `DB_URI` and `CLOUDINARY_URL` to your .env
+To easily set up, add `DB_URI` and `CLOUDINARY_URL` to your .env.
+
+If you use authentication on your MongoDB instance, set the following in your .env
+```Bash
+DB_NAME=<yourdbname>
+DB_HOST=<dbhost>
+DB_PORT=<dbport>
+DB_USER=<dbuser>
+DB_USER_PWD=<yourdbpassword>
+NODE_ENV=development
+CLOUDINARY_URL=<yourcloudinaryurl>
+```
 
 You'll need MongoDB and a Cloudinary URL to run.
 
