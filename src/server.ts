@@ -5,7 +5,7 @@ import Logger from "./core/Logger";
 import { port, cloudinaryUrl } from './config';
 
 if (!cloudinaryUrl) {
-  Logger.error("Cloudinary url not set in .env");
+  Logger.warn("Cloudinary url not set in .env. Please set it");
 }
 
 app
