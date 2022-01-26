@@ -21,7 +21,7 @@ router.post(
   asyncHandler(async (req, res) => {
     if (req.body.state === DroneState.Loading && req.body.battery < 25)
       throw new BadRequestError("Battery is too low to be in loading state");
-      
+
     const drone = await DroneModel.create({ 
       ...req.body,
       serialNumber: uuidv4()
@@ -79,7 +79,7 @@ router.patch(
     const medication = await MedicationModel.create({
       ...req.body,
       image: imgUrl,
-      code: req.body.code || uuidv4().replace('-', '_').toUpperCase() // replace dash with underscore
+      code: req.body.code || uuidv4().replace(/-/gi, '_').toUpperCase() // replace dash with underscore
     });
 
     const droneUpdate = await DroneModel.findOneAndUpdate(
