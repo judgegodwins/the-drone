@@ -41,7 +41,7 @@ router.patch(
       serialNumber: req.query.serialNumber as string,
     });
 
-    if (!drone) throw new BadRequestError("Drone does not exist");
+    if (!drone) throw new BadRequestError("Drone with the inputted serial number does not exist");
 
     const droneIsFree = await DroneModel.isFree(
       drone._id,
