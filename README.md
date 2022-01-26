@@ -77,6 +77,25 @@ Body: Should be form-data format
 ```
 `code` in the body is optional because it can be automatically generated
 
+Example Response
+
+```JSON
+{
+    "success": true,
+    "message": "Medication added",
+    "data": [
+        {
+            "_id": "61f10a0667d3e34933ceb790",
+            "name": "js-load-u-r-t-t-d",
+            "weight": 200,
+            "code": "8EE4060E_184E_423C_9D12_CF346DA1F007",
+            "image": "https://res.cloudinary.com/judge/image/upload/v1643186694/fedsrmen6wm3xatp7w7p.png",
+            "__v": 0
+        }
+    ]
+}
+```
+
 GET `/drone/get-loads?serialNumber=serialNumberOfDrone`
 
 Response
