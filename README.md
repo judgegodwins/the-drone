@@ -15,7 +15,7 @@ CLOUDINARY_URL=<yourcloudinaryurl>
 
 You'll need MongoDB and a Cloudinary URL to run.
 
-The log job runs at the beginning of every one hour (e.g 1:00, 2:00) to log the battery status of every drone. Logs can be found in `logs/dronelogs.log`
+The log job runs every 5 minutes battery to log the battery status of every drone. Logs can be found in `logs/dronelogs.log`
 
 LightWeight drones can carry 200gr, MiddleWeight => 300gr, CruiserWeight => 400 gr, HeavyWeight => 500gr.
 
