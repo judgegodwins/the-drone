@@ -14,12 +14,12 @@ const dbURI =
 mongoose
   .connect(dbURI)
   .then(async (db) => {
-    Logger.info("DB connected");
+    console.log("DB connected");
     // await seed();
   })
   .catch((e) => {
     console.log("error connecting: ", e);
-    Logger.info("Mongoose connection error");
+    Logger.warn("Mongoose connection error");
     Logger.error(e);
   });
 
