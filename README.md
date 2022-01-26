@@ -19,6 +19,10 @@ The log job runs every 5 minutes battery to log the battery status of every dron
 
 LightWeight drones can carry 200gr, MiddleWeight => 300gr, CruiserWeight => 400 gr, HeavyWeight => 500gr.
 
+Run the following to install dependencies:
+```Bash
+npm i
+```
 Run the following to build
 ```Bash
 npm run build
